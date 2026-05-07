@@ -75,7 +75,7 @@ export default function RegisterPage() {
   return (
     <section className="mx-auto max-w-2xl space-y-6 py-8">
       <header className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">시니어 프로필 등록</h1>
+        <h1 className="text-4xl font-bold tracking-tight">시니어 일자리 신청하기</h1>
         <p className="text-xl text-muted-foreground">
           아래 항목을 채워주시면 잘 맞는 일자리를 자동으로 찾아드려요.
         </p>
@@ -86,7 +86,7 @@ export default function RegisterPage() {
           role="status"
           className="space-y-4 rounded-md border-2 border-green-700 bg-green-50 p-5 text-green-800"
         >
-          <p className="text-xl font-semibold">등록이 완료되었습니다.</p>
+          <p className="text-xl font-semibold">등록이 완료되었습니다. 담당자가 곧 연락드립니다</p>
           {savedSeniorId && (
             <Link
               href={`/recommendations?senior_id=${savedSeniorId}`}
@@ -113,6 +113,7 @@ export default function RegisterPage() {
               <Label htmlFor="name" className="text-lg">
                 이름 <span className="text-red-700">*</span>
               </Label>
+              <p className="text-base text-muted-foreground">성함을 알려 주세요.</p>
               <Input
                 id="name"
                 value={name}
@@ -126,6 +127,7 @@ export default function RegisterPage() {
               <Label htmlFor="region" className="text-lg">
                 지역 <span className="text-red-700">*</span>
               </Label>
+              <p className="text-base text-muted-foreground">어디에서 일하고 싶으세요?</p>
               <Select value={region} onValueChange={(v) => setRegion(v ?? "")}>
                 <SelectTrigger id="region" className="!h-12 w-full text-lg">
                   <SelectValue placeholder="지역을 선택하세요" />
@@ -144,6 +146,7 @@ export default function RegisterPage() {
               <Label htmlFor="desired_job" className="text-lg">
                 희망 직종 <span className="text-red-700">*</span>
               </Label>
+              <p className="text-base text-muted-foreground">어떤 일을 하시겠어요?</p>
               <Select value={desiredJob} onValueChange={(v) => setDesiredJob(v ?? "")}>
                 <SelectTrigger id="desired_job" className="!h-12 w-full text-lg">
                   <SelectValue placeholder="희망 직종을 선택하세요" />
@@ -162,6 +165,7 @@ export default function RegisterPage() {
               <Label htmlFor="career_years" className="text-lg">
                 경력 (년)
               </Label>
+              <p className="text-base text-muted-foreground">이 일을 몇 년쯤 해보셨나요?</p>
               <Input
                 id="career_years"
                 type="number"

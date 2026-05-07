@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { CheckCircle2, Clock, UserX } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -145,9 +147,9 @@ export function SeniorsDashboard() {
       )}
 
       <div className="grid gap-4 md:grid-cols-3">
-        <StatCard label="미매칭" value={counts.unmatched} desc="아직 매칭되지 않은 시니어" tone="gray" />
-        <StatCard label="매칭 대기" value={counts.pending} desc="추천은 있으나 배정 전" tone="amber" />
-        <StatCard label="배정 완료" value={counts.assigned} desc="일자리에 배정된 시니어" tone="blue" />
+        <StatCard label="미매칭" value={counts.unmatched} desc="아직 매칭되지 않은 시니어" tone="gray" Icon={UserX} />
+        <StatCard label="매칭 대기" value={counts.pending} desc="추천은 있으나 배정 전" tone="amber" Icon={Clock} />
+        <StatCard label="배정 완료" value={counts.assigned} desc="일자리에 배정된 시니어" tone="blue" Icon={CheckCircle2} />
       </div>
 
       <Card className="border-2">
@@ -212,11 +214,13 @@ function StatCard({
   value,
   desc,
   tone,
+  Icon,
 }: {
   label: string;
   value: number;
   desc: string;
   tone: "gray" | "amber" | "blue";
+  Icon: LucideIcon;
 }) {
   const toneClass =
     tone === "blue"
@@ -224,10 +228,19 @@ function StatCard({
       : tone === "amber"
       ? "border-amber-600 bg-amber-50"
       : "border-gray-400 bg-gray-50";
+  const iconClass =
+    tone === "blue"
+      ? "text-blue-700"
+      : tone === "amber"
+      ? "text-amber-700"
+      : "text-gray-600";
   return (
     <Card className={`border-2 ${toneClass}`}>
       <CardContent className="p-6">
-        <p className="text-lg font-semibold">{label}</p>
+        <div className="flex items-center gap-2">
+          <Icon className={`h-7 w-7 ${iconClass}`} aria-hidden />
+          <p className="text-lg font-semibold">{label}</p>
+        </div>
         <p className="mt-2 text-5xl font-bold tracking-tight">{value}</p>
         <p className="mt-1 text-base text-muted-foreground">{desc}</p>
       </CardContent>

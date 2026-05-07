@@ -20,6 +20,13 @@ type MatchRow = {
   jobs: EmbeddedJob | null;
 };
 
+function scoreLabel(score: number): string {
+  if (score >= 6) return "매우 적합";
+  if (score >= 4) return "적합";
+  if (score >= 2) return "보통";
+  return "낮음";
+}
+
 function ScoreBadge({ score }: { score: number }) {
   if (score >= 6) {
     return (
@@ -98,11 +105,12 @@ export default async function RecommendationsPage({
   return (
     <section className="space-y-6 py-8">
       <header className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">추천 일자리</h1>
+        <h1 className="text-4xl font-bold tracking-tight">
+          {senior ? `${senior.name} 님께 맞는 일자리` : "추천 일자리"}
+        </h1>
         {senior ? (
           <p className="text-xl text-muted-foreground">
-            <span className="font-semibold text-foreground">{senior.name}</span>
-            님 · {senior.region} · 희망 {senior.desired_job} · 경력 {senior.career_years}년
+            {senior.region} · 희망 {senior.desired_job} · 경력 {senior.career_years}년
           </p>
         ) : (
           <p className="text-xl text-muted-foreground">
@@ -120,7 +128,14 @@ export default async function RecommendationsPage({
       {!matchErr && positive.length === 0 ? (
         <EmptyBox
           title="현재 매칭되는 일자리가 없습니다."
-          body="잠시 후 새 일자리가 등록되면 자동으로 추천해 드립니다."
+          body={
+            <div className="space-y-1">
+              <p>잠시 후 새 일자리가 등록되면 자동으로 추천해 드립니다.</p>
+              <p className="font-semibold text-foreground">
+                담당자가 직접 연락드리니 잠시만 기다려 주세요.
+              </p>
+            </div>
+          }
         />
       ) : (
         <ul className="space-y-4">
@@ -139,7 +154,10 @@ export default async function RecommendationsPage({
                     </div>
                     <div className="text-right">
                       <p className="mb-1 text-sm text-muted-foreground">매칭 점수</p>
-                      <ScoreBadge score={m.score} />
+                      <div className="flex items-center justify-end gap-2">
+                        <ScoreBadge score={m.score} />
+                        <span className="text-lg font-semibold">{scoreLabel(m.score)}</span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
