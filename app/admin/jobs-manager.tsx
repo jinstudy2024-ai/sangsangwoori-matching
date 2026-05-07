@@ -166,7 +166,7 @@ export function JobsManager() {
               <Label htmlFor="job-region" className="text-lg">
                 지역 <span className="text-red-700">*</span>
               </Label>
-              <Select value={region} onValueChange={setRegion}>
+              <Select value={region} onValueChange={(v) => setRegion(v ?? "")}>
                 <SelectTrigger id="job-region" className="!h-12 w-full text-lg">
                   <SelectValue placeholder="지역을 선택하세요" />
                 </SelectTrigger>
@@ -184,7 +184,7 @@ export function JobsManager() {
               <Label htmlFor="job-type" className="text-lg">
                 직종 <span className="text-red-700">*</span>
               </Label>
-              <Select value={jobType} onValueChange={setJobType}>
+              <Select value={jobType} onValueChange={(v) => setJobType(v ?? "")}>
                 <SelectTrigger id="job-type" className="!h-12 w-full text-lg">
                   <SelectValue placeholder="직종을 선택하세요" />
                 </SelectTrigger>

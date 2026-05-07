@@ -126,7 +126,7 @@ export default function RegisterPage() {
               <Label htmlFor="region" className="text-lg">
                 지역 <span className="text-red-700">*</span>
               </Label>
-              <Select value={region} onValueChange={setRegion}>
+              <Select value={region} onValueChange={(v) => setRegion(v ?? "")}>
                 <SelectTrigger id="region" className="!h-12 w-full text-lg">
                   <SelectValue placeholder="지역을 선택하세요" />
                 </SelectTrigger>
@@ -144,7 +144,7 @@ export default function RegisterPage() {
               <Label htmlFor="desired_job" className="text-lg">
                 희망 직종 <span className="text-red-700">*</span>
               </Label>
-              <Select value={desiredJob} onValueChange={setDesiredJob}>
+              <Select value={desiredJob} onValueChange={(v) => setDesiredJob(v ?? "")}>
                 <SelectTrigger id="desired_job" className="!h-12 w-full text-lg">
                   <SelectValue placeholder="희망 직종을 선택하세요" />
                 </SelectTrigger>
