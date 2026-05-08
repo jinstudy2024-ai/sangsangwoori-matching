@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { CheckCircle2, Clock, UserX } from "lucide-react";
+import { CheckCircle2, Clock, Download, UserX } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -24,6 +24,11 @@ type Senior = {
   region: string;
   desired_job: string;
   career_years: number;
+  age: number | null;
+  phone: string | null;
+  certificate: string | null;
+  desired_salary: string | null;
+  desired_work_hours: string | null;
 };
 
 type Match = {
@@ -68,18 +73,73 @@ function StatusBadge({ bucket }: { bucket: SeniorBucket }) {
   );
 }
 
+function csvCell(value: string | number | null | undefined): string {
+  if (value === null || value === undefined) return "";
+  const s = String(value);
+  if (/[",\r\n]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
+  return s;
+}
+
+function buildSeniorsCsv(seniors: Senior[]): string {
+  const headers = [
+    "이름",
+    "지역",
+    "직종",
+    "경력(년)",
+    "나이",
+    "연락처",
+    "자격증",
+    "희망급여",
+    "희망근무시간",
+  ];
+  const lines = [headers.join(",")];
+  for (const s of seniors) {
+    lines.push(
+      [
+        s.name,
+        s.region,
+        s.desired_job,
+        s.career_years,
+        s.age,
+        s.phone,
+        s.certificate,
+        s.desired_salary,
+        s.desired_work_hours,
+      ]
+        .map(csvCell)
+        .join(","),
+    );
+  }
+  return lines.join("\r\n");
+}
+
+function downloadCsv(filename: string, csv: string) {
+  const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
 export function SeniorsDashboard() {
   const [seniors, setSeniors] = useState<Senior[]>([]);
   const [matches, setMatches] = useState<Match[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [assigningId, setAssigningId] = useState<string | null>(null);
 
   const fetchAll = useCallback(async () => {
     setLoading(true);
     const [seniorsRes, matchesRes] = await Promise.all([
       supabase
         .from("seniors")
-        .select("id, name, region, desired_job, career_years")
+        .select(
+          "id, name, region, desired_job, career_years, age, phone, certificate, desired_salary, desired_work_hours",
+        )
         .order("created_at", { ascending: false }),
       supabase
         .from("matches")
@@ -121,6 +181,31 @@ export function SeniorsDashboard() {
     return c;
   }, [rows]);
 
+  const assignSenior = useCallback(
+    async (seniorId: string) => {
+      setAssigningId(seniorId);
+      const { error: updErr } = await supabase
+        .from("matches")
+        .update({ status: "assigned" })
+        .eq("senior_id", seniorId)
+        .eq("status", "pending");
+      if (updErr) {
+        setError(updErr.message);
+        setAssigningId(null);
+        return;
+      }
+      await fetchAll();
+      setAssigningId(null);
+    },
+    [fetchAll],
+  );
+
+  const handleDownloadCsv = useCallback(() => {
+    const csv = buildSeniorsCsv(seniors);
+    const today = new Date().toISOString().slice(0, 10);
+    downloadCsv(`seniors-${today}.csv`, csv);
+  }, [seniors]);
+
   return (
     <section className="space-y-6">
       <div className="flex items-center justify-between">
@@ -130,14 +215,25 @@ export function SeniorsDashboard() {
             등록된 시니어의 매칭 상태를 한눈에 봅니다.
           </p>
         </div>
-        <Button
-          variant="outline"
-          className="h-11 text-base"
-          onClick={fetchAll}
-          disabled={loading}
-        >
-          {loading ? "불러오는 중..." : "새로고침"}
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            className="h-11 text-base"
+            onClick={handleDownloadCsv}
+            disabled={loading || seniors.length === 0}
+          >
+            <Download className="mr-2 h-5 w-5" aria-hidden />
+            엑셀 다운로드
+          </Button>
+          <Button
+            variant="outline"
+            className="h-11 text-base"
+            onClick={fetchAll}
+            disabled={loading}
+          >
+            {loading ? "불러오는 중..." : "새로고침"}
+          </Button>
+        </div>
       </div>
 
       {error && (
@@ -162,19 +258,20 @@ export function SeniorsDashboard() {
                 <TableHead className="text-lg">희망 직종</TableHead>
                 <TableHead className="text-lg">최고 매칭 점수</TableHead>
                 <TableHead className="text-lg">상태</TableHead>
+                <TableHead className="text-lg">처리</TableHead>
                 <TableHead className="text-right text-lg">상세</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="py-8 text-center text-lg text-muted-foreground">
+                  <TableCell colSpan={7} className="py-8 text-center text-lg text-muted-foreground">
                     불러오는 중...
                   </TableCell>
                 </TableRow>
               ) : rows.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={6} className="py-8 text-center text-lg text-muted-foreground">
+                  <TableCell colSpan={7} className="py-8 text-center text-lg text-muted-foreground">
                     아직 등록된 시니어가 없습니다.
                   </TableCell>
                 </TableRow>
@@ -189,6 +286,18 @@ export function SeniorsDashboard() {
                     </TableCell>
                     <TableCell>
                       <StatusBadge bucket={bucket} />
+                    </TableCell>
+                    <TableCell>
+                      <Button
+                        variant="default"
+                        className="h-10 px-4 text-base"
+                        onClick={() => assignSenior(senior.id)}
+                        disabled={
+                          assigningId === senior.id || bucket !== "pending"
+                        }
+                      >
+                        {assigningId === senior.id ? "처리 중..." : "배정 완료 처리"}
+                      </Button>
                     </TableCell>
                     <TableCell className="text-right">
                       <Link

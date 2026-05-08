@@ -1,0 +1,351 @@
+You're paying 20 bucks a month for
+ChatGpt Plus and you're probably using
+maybe 10% of what it can actually do. I
+know that because I made the same
+mistake for almost a year. I'd open it,
+type a question, get an answer, close
+the tab. That was it. Meanwhile, the
+people getting real value out of this
+thing were quietly using features I
+didn't even know existed
+and getting work done in minutes that
+was taking me hours. Welcome back to
+bitbiased.ai, AI, where we do the
+research so you don't have to join our
+community of AI enthusiasts with our
+free weekly newsletter. Click the link
+in the description below to subscribe.
+You will get the key AI news, tools, and
+learning resources to stay ahead. So, in
+this video, I'm going to walk you
+through every model, every feature, and
+every tip I wish someone had told me on
+day one, so you can finally get your
+money's worth out of chat GPT. We'll
+cover which GPT model to actually pick
+for which task, the hidden tools buried
+inside Plus, and the prompting tricks
+that genuinely change the quality of
+what you get back. First up, let's talk
+about the brain behind chat GPT. Because
+this is where most people get confused
+before they even type a single prompt,
+the models, a quick timeline. Here's
+something most people don't realize.
+When you open chat GPT, you're not
+talking to ChatGpt. You're talking to
+one of about a dozen different models.
+And which one you pick can completely
+change the answer you get. Let me give
+you the speedrun history. Back in June
+2020, OpenAI released GPT3
+175 billion parameters API only, mostly
+known to developers. Then in November
+2022, GPT 3.5 dropped inside the
+original chat GPT and that's when the
+whole world noticed. March 2023 brought
+GPT4 which was the first one that could
+actually look at images. Then GPT40 in
+2024 added real-time voice and video.
+GPT4.1 in early 2025 sharpened up
+coding. And then everything changed in
+August 2025 with GPT5. But here's where
+it gets interesting. GPT5 wasn't just a
+smarter model. It was a system. It
+introduced two modes. An instant mode
+for quick answers and a thinking mode
+that actually pauses to reason through
+hard problems before responding. And by
+2026, GPT 5.4 4 and GPT 5.5 push that
+even further. Million token context
+windows way better coding and what
+OpenAI calls agentic workflows where the
+model can actually go do multi-step
+tasks on its own. So when you see those
+little model names in the drop down GPT
+5.4 for thinking GPT 5.5 Pro, all of
+that. That's the family tree. And which
+one you should pick? That's the next
+question. Free versus Plus versus Pro.
+Which models do you actually get? All
+right, this is the part that trips
+everyone up. The plan you're on directly
+controls which models you can talk to.
+If you're on the free plan, you mostly
+get the smaller, faster models. Think
+GPT5 Instant with strict daily caps.
+Good for quick stuff, but you'll hit a
+wall fast if you're doing anything
+heavy. The Go plan, which is OpenAI's
+newer interim tier, loosens those caps a
+bit, but still limits you to the lighter
+models. Now, here's where Plus earns its
+$20. With Plus, you unlock GPT 5.3, GPT
+5.4 Instant, and GPT 5.4 Thinking. That
+last one is the real upgrade. When
+you're stuck on a complex coding bug, a
+tricky negotiation email or a strategy
+problem.
+Switching to thinking mode is night and
+day. It literally takes longer to
+respond because it's working through the
+logic
+and the answer reflects that. Then above
+plus there's pro which gives you GPT 5.5
+and GPT 5.5 Pro. The most advanced
+reasoning model Open AAI offers. That's
+overkill for most people. But if you're
+a developer, researcher, or you live
+inside ChatGpt all day, it's worth
+knowing about. Quick tip, and this saved
+me hours once I figured it out. Don't
+just leave it on auto. For anything that
+matters, manually switch to thinking.
+The quality jump is huge. Plugins,
+browsing, and the Atlas browser. Now,
+let's get into the features because this
+is where plus really separates itself.
+Chat GPT can browse the live web. That
+sounds basic, but think about what it
+means. You're no longer limited to what
+the model learned during training. Ask
+it about something that happened
+yesterday, and it'll actually go find
+it. Plus, users get this enabled by
+default. Free users have it limited. But
+the bigger story here is the GPT store.
+There are thousands of custom GPTs built
+by other users. Specialized assistance
+for SEO, legal research, fitness
+coaching, coding, and specific
+frameworks, you name it. Most people
+never touch this section and they're
+missing out. Spend 10 minutes browsing
+the store. Find two or three that match
+what you do daily. Pin them and your
+workflow changes overnight. And then
+there's Atlas, which is OpenAI's full
+browser. This one's wild. It doesn't
+just let chat GPT see one web page. It
+remembers everything you've browsed. So,
+you can ask things like, "Summarize the
+three articles I read this morning about
+AI regulation." And it actually does it.
+It's still rolling out, but it's a
+glimpse of where this is all heading.
+Advanced data analysis, the feature that
+pays for plus. Okay, this next part, if
+you do anything with data, this alone is
+worth the subscription. Advanced data
+analysis, which used to be called code
+interpreter, lets you upload basically
+any file, CSVs, Excel sheets, PDFs, even
+JSON.
+And ChatGpt will write Python code, run
+it, and give you back results. Charts,
+summaries, cleaned up data, forecasts,
+all of it. Let me show you what that
+looks like in practice. Say you've got a
+messy sales spreadsheet with 3 years of
+data. You upload it and just type, "Show
+me monthly trends." and forecast the
+next quarter. ChatgPT will actually run
+pandas under the hood. Generate a chart
+and walk you through what's happening.
+No formulas, no Python knowledge
+required. And here's the part that
+surprised me. It's not just for
+analysts. I've seen people use this to
+clean up messy contact lists, parse PDF
+invoices, even generate quick reports
+their boss thinks took them all
+afternoon. It's one of those tools where
+the limit is honestly your imagination.
+Vision and voice talking to ChatGpt like
+it's a person. This is the part that
+feels like science fiction the first
+time you try it. Vision means you can
+send chat GPT any image, a photo, a
+screenshot, a diagram, a handwritten
+note, and it'll understand it. Snap a
+picture of a menu in a foreign language.
+It translates it. Take a screenshot of a
+spreadsheet error. It explains what went
+wrong. Photograph a math problem from a
+textbook. It walks your kid through the
+solution. Voice mode is the other half
+of this. You tap the microphone icon and
+you're literally having a conversation.
+Plus, users get virtually unlimited
+voice time on the full GPT40 voice
+model. Free users get about 2 hours a
+day on the smaller version. And the
+voices themselves are good. Like, I
+forgot I was talking to a machine. Good.
+What I use it for personally? Driving.
+I'll be on a long drive and I'll just
+talk through ideas, get feedback,
+brainstorm content. It's like having a
+thoughtful friend on speaker phone who
+never gets tired of your halfbaked
+thoughts. Memory and custom instructions
+make it yours. Most people use chat GPT
+like a search engine. Fresh question
+every time. No context. That's a mistake
+because there are two features sitting
+in your settings right now that
+fundamentally change how it works.
+Custom instructions is the first one. Go
+into settings, find personalization, and
+you'll see two boxes. The first asks
+what chat GPT should know about you. The
+second asks how you want it to respond.
+Fill these out properly,
+your role, your goals, the tone you
+want, the format you prefer,
+and every single response gets
+noticeably better. Mine says, "I'm a
+content creator. I want responses
+structured with clear sections, no
+fluff. The difference is massive. Memory
+is the second one, and it's even more
+powerful." Chat GPT can remember details
+from past conversations,
+your projects, your preferences, your
+writing style and bring them into new
+chats automatically. So instead of
+reexplaining your business every time,
+it just knows. Plus, users get full
+memory. Free users get a lighter
+version. And don't worry about privacy
+here. You can review every memory it's
+saved. Delete anything you don't want or
+turn the whole thing off in settings.
+Canvas, the editing mode you're probably
+ignoring. This next feature is one of
+those things where once you start using
+it, you can't go back. When you ask chat
+GPT to write something long, an essay, a
+script, a chunk of code, it can open
+something called canvas. That's a
+separate panel on the right side of the
+screen. And it turns chat GPT into a
+real editor. You can highlight any
+sentence and ask for changes. There are
+quick shortcuts for things like make
+this shorter, add more detail, change
+the tone, or explain this code. For
+coders, there's literally a review my
+code button that catches bugs and
+suggests improvements in line. The
+reason this matters, long form work used
+to be painful in chat GPT. You'd get an
+output, find one paragraph you didn't
+like, and have to copy paste, prompt
+around it, hope it didn't rewrite the
+whole thing. Canvas fixes that
+completely. You edit like you're in a
+Google doc, but with an AI sitting next
+to you the entire time. Prompt
+engineering, the skill that multiplies
+everything. Here's the truth nobody
+really wants to hear. Chat GPT is only
+as good as your prompt. The same model
+can give you a generic useless answer or
+a brilliant one. And the difference is
+almost entirely in how you ask. Three
+rules that change the game for me.
+First, be specific. Don't say, "Write me
+a blog post." Say, "Write me a 600word
+blog post for firsttime home buyers in a
+friendly tone with three sections and a
+call to action at the end." The more
+constraints you give, the better the
+output gets. Counterintuitive, I know.
+Second, give it a roll. Start your
+prompt with something like, "You're an
+expert copywriter with 10 years of
+experience in finance." That single line
+completely shifts the quality of the
+response. Because now the model knows
+what perspective to write from. Third,
+for anything complex, ask it to think
+step by step. With the newer GPT5
+thinking models, this is built in. But
+even on faster models, adding think
+through this carefully before answering
+pushes it toward better reasoning. And
+one bonus tip, iterate your first prompt
+almost never gets you the best answer.
+Treat it like a conversation. Make that
+shorter. Try it more casual. Add an
+example. That back and forth is where
+the magic happens. Pricing is plus
+actually worth it. Let's talk money
+because this is the question I get most.
+Free is well free. You get GPT5 Instant
+with daily caps, basic voice, basic
+image generation, and limited browsing
+for casual users, students, occasional
+questions, light brainstorming. It's
+genuinely fine. Plus is $20 a month. You
+get the bigger models including GPT 5.
+in thinking way higher message limits
+unlimited voice full advanced data
+analysis the canvas editor custom GPTs
+expanded memory and priority access
+during high traffic times for anyone
+using chat GPT for work even a few times
+a week it pays for itself fast pro is
+the higher tier pricier aimed at power
+users and small teams who need GPT 5.5
+pro and basically unlimited everything
+worth it if you're a developer or
+researcher who lives in chat GPT,
+probably overkill for most people. My
+honest take, if you're using chat GPT
+more than once or twice a week for
+anything that matters. Plus is the
+obvious upgrade. If you're using it
+daily for serious work, look at Pro. The
+honest pros and cons. Let me be real
+with you for a second because no tool is
+perfect. The pros are obvious. Chat GPT
+is the most capable AI assistant most
+people have ever used. It writes, codes,
+analyzes, talks, sees images, runs
+Python, edits documents, and remembers
+context across conversations. New
+features ship constantly, and the gap
+between Plus and Free keeps getting
+wider in Plus's favor. But the cons are
+real, too. It still hallucinates,
+meaning sometimes it states things
+confidently that are just wrong. Always
+fact check anything that matters. Usage
+caps exist, even on plus during peak
+times. By default, your conversations
+may be used to train future models.
+Unless you opt out in data controls, and
+for genuinely nuanced work, sensitive
+writing, high-stakes decisions, creative
+projects with a strong personal voice,
+you still need a human in the loop.
+Treat it as the most powerful assistant
+you've ever had, not as an oracle. That
+mindset alone will save you from a lot
+of mistakes. If this gave you even one
+tip you didn't know, do me a favor and
+hit that like button. It genuinely helps
+the channel reach more people who need
+this stuff. Subscribe if you want more
+deep dives like this on AI tools that
+actually move the needle. Drop a comment
+telling me which feature you're going to
+try first. I read all of them and I'm
+always curious what people latch on to.
+And if you want my exact prompt
+templates and the comparison table from
+this video, the link is in the
+description. Thanks for watching. I'll
+see you in the next

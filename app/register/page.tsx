@@ -25,6 +25,11 @@ export default function RegisterPage() {
   const [region, setRegion] = useState("");
   const [desiredJob, setDesiredJob] = useState("");
   const [careerYears, setCareerYears] = useState("");
+  const [age, setAge] = useState("");
+  const [phone, setPhone] = useState("");
+  const [certificate, setCertificate] = useState("");
+  const [desiredSalary, setDesiredSalary] = useState("");
+  const [desiredWorkHours, setDesiredWorkHours] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [savedSeniorId, setSavedSeniorId] = useState<string | null>(null);
@@ -34,6 +39,11 @@ export default function RegisterPage() {
     setRegion("");
     setDesiredJob("");
     setCareerYears("");
+    setAge("");
+    setPhone("");
+    setCertificate("");
+    setDesiredSalary("");
+    setDesiredWorkHours("");
   }
 
   async function handleSubmit(e: React.FormEvent) {
@@ -48,6 +58,11 @@ export default function RegisterPage() {
     setStatus("saving");
     setErrorMsg("");
 
+    const trimmedCertificate = certificate.trim();
+    const trimmedSalary = desiredSalary.trim();
+    const trimmedHours = desiredWorkHours.trim();
+    const trimmedPhone = phone.trim();
+
     const { data, error } = await supabase
       .from("seniors")
       .insert({
@@ -55,6 +70,11 @@ export default function RegisterPage() {
         region,
         desired_job: desiredJob,
         career_years: careerYears === "" ? 0 : Number(careerYears),
+        age: age === "" ? null : Number(age),
+        phone: trimmedPhone === "" ? null : trimmedPhone,
+        certificate: trimmedCertificate === "" ? null : trimmedCertificate,
+        desired_salary: trimmedSalary === "" ? null : trimmedSalary,
+        desired_work_hours: trimmedHours === "" ? null : trimmedHours,
       })
       .select("id")
       .single();
@@ -173,6 +193,86 @@ export default function RegisterPage() {
                 value={careerYears}
                 onChange={(e) => setCareerYears(e.target.value)}
                 placeholder="0"
+                className="h-12 text-lg"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="age" className="text-lg">
+                나이
+              </Label>
+              <p className="text-base text-muted-foreground">올해 만 나이를 적어 주세요. (선택)</p>
+              <Input
+                id="age"
+                type="number"
+                min={0}
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                placeholder="65"
+                className="h-12 text-lg"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="text-lg">
+                연락처
+              </Label>
+              <p className="text-base text-muted-foreground">담당자가 연락드릴 전화번호입니다. (선택)</p>
+              <Input
+                id="phone"
+                type="tel"
+                inputMode="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="010-1234-5678"
+                className="h-12 text-lg"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="certificate" className="text-lg">
+                자격증
+              </Label>
+              <p className="text-base text-muted-foreground">
+                보유하신 자격증이 있으면 적어 주세요. (선택, 예: 요양보호사 1급)
+              </p>
+              <Input
+                id="certificate"
+                value={certificate}
+                onChange={(e) => setCertificate(e.target.value)}
+                placeholder="요양보호사 1급"
+                className="h-12 text-lg"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="desired_salary" className="text-lg">
+                희망 급여
+              </Label>
+              <p className="text-base text-muted-foreground">
+                받고 싶으신 급여 수준을 적어 주세요. (선택, 예: 월 200만원)
+              </p>
+              <Input
+                id="desired_salary"
+                value={desiredSalary}
+                onChange={(e) => setDesiredSalary(e.target.value)}
+                placeholder="월 200만원"
+                className="h-12 text-lg"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="desired_work_hours" className="text-lg">
+                희망 근무시간
+              </Label>
+              <p className="text-base text-muted-foreground">
+                일하실 수 있는 시간대를 적어 주세요. (선택, 예: 오전 9시~오후 6시)
+              </p>
+              <Input
+                id="desired_work_hours"
+                value={desiredWorkHours}
+                onChange={(e) => setDesiredWorkHours(e.target.value)}
+                placeholder="오전 9시~오후 6시"
                 className="h-12 text-lg"
               />
             </div>
